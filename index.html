@@ -1,0 +1,231 @@
+<!-- ---
+redirect_from:
+  - https://nvlabs.github.io/glamr
+  - nvlabs.github.io/glamr
+  - /glamr
+--- -->
+
+
+<!DOCTYPE html>
+<html lang="" xml:lang="" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="assets/media/favicon.ico" rel="shortcut icon" />
+    <title>
+        A two-stage framework for learning robot manipulation policy from 4D spatial-temporal flow in human-to-robot object handover
+    </title>
+    <meta content="STFlowH2R" property="og:title" />
+    <meta content="A novel two-stage framework that learns robot manipulation policies from 4D spatiotemporal flow representations for safe and efficient human-to-robot object handover. Our approach combines offline data generation with diffusion-based policy learning to achieve superior performance in collaborative robotics." name="description" property="og:description" />
+    <!-- <meta content="https://nvlabs.github.io/glamr" property="og:url" /> -->
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <script defer src="assets/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+    <div class="n-header">
+    </div>
+    <div class="n-title">
+        <h1>
+            STFlowH2R: A two-stage framework for learning robot manipulation policy from 4D spatial-temporal flow in human-to-robot object handover
+        </h1>
+    </div>
+    <div class="n-byline">
+        <div class="byline">
+            <ul class="authors">
+                <li>
+                    <a target="_blank">Ruirui Zhong</a><sup>1, 2</sup>
+                </li>
+                <li>
+                    <a target="_blank">Bingtao Hu</a><sup>1</sup>
+                </li>
+                <li>
+                    <a target="_blank">Zhihao Liu</a><sup>2</sup>
+                </li>
+                <li>
+                    <a target="_blank">Qiang Qin</a><sup>2</sup>
+                </li>
+                <li>
+                    <a target="_blank">Yixiong Feng</a><sup>1, 3</sup>
+                </li>
+                <li>
+                    <a target="_blank">Lihui Wang</a><sup>2</sup>
+                </li>
+                <li>
+                    <a target="_blank">Jianrong Tan</a><sup>1</sup>
+                </li>
+                <li>
+                    <a target="_blank">Xi Vincent Wang</a><sup>2, *</sup>
+                </li>
+            </ul>
+            <ul class="authors affiliations">
+                <li>
+                    <sup>
+                        1
+                    </sup>
+                    Zhejiang University
+                </li>
+                <li>
+                    <sup>
+                        2
+                    </sup>
+                    KTH Royal Institute of Technology
+                </li>
+                <li>
+                    <sup>
+                        3
+                    </sup>
+                    Guizhou University
+                </li>
+            </ul>
+            <ul class="authors venue">
+                <li>
+                    Robotics and Computer-Integrated Manufacturing, 2025
+                </li>
+            </ul>
+            <ul class="authors links">
+                <li>
+                    <a href="https://arxiv.org/pdf/xxxx.xxxxx.pdf" target="_blank">
+                        <button class="btn"><i class="fa fa-file-pdf"></i> Paper</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/expressorrz/STFlowH2R" target="_blank">
+                        <button class="btn"><i class="fab fa-github"></i> Code</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#abstract">
+                        <button class="btn"><i class="fa fa-info-circle"></i> Abstract</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#method">
+                        <button class="btn"><i class="fa fa-cogs"></i> Method</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#results">
+                        <button class="btn"><i class="fa fa-chart-bar"></i> Results</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="n-article">
+        <h2 id="abstract">
+            Abstract
+        </h2>
+        <p>
+            Natural and safe Human-to-Robot (H2R) object handover is a critical capability for effective Human-Robot Collaboration (HRC). However, learning a robust handover policy for this task is often hindered by the prohibitive cost of collecting physical robot demonstrations and the limitations of simplistic state representations that inadequately capture the complex dynamics of the interaction. To address these challenges, a two-stage learning framework is proposed that synthesizes substantially augmented, synthetically diverse handover demonstrations without requiring a physical robot and subsequently learns a handover policy from a rich 4D spatiotemporal flow. First, an offline, physical robot-free data-generation pipeline is introduced that produces augmented and diverse handover demonstrations, thereby eliminating the need for costly physical data collection. Second, a novel 4D spatiotemporal flow is defined as a comprehensive representation consisting of a skeletal kinematic flow that captures high-level motion dynamics and a geometric motion flow that characterizes fine-grained surface interactions. Finally, a diffusion-based policy conditioned on this spatiotemporal representation is developed to generate coherent and anticipatory robot actions. Extensive experiments demonstrate that the proposed method significantly outperforms state-of-the-art baselines in task success, efficiency, and motion quality, thereby paving the way for safer and more intuitive collaborative robots.
+        </p>
+
+        <h2 id="highlights">
+            Key Highlights
+        </h2>
+        <ul>
+            <li>A physical robot-free pipeline synthesizes diverse handover demonstrations.</li>
+            <li>A 4D spatiotemporal flow representation integrates kinematic and geometric motion.</li>
+            <li>First to solve H2R object handover tasks with a conditional diffusion-based policy.</li>
+        </ul>
+
+        <h2>
+            Framework Overview
+        </h2>
+        <img class="figure" src="assets/images/overall.jpg" alt="STFlowH2R Framework Overview" style="width: 60%; height: auto; display: block; margin: 0 auto;">
+
+
+        <h2 id="method">
+            Method Overview
+        </h2>
+        <img class="figure" src="assets/images/data_pipline.jpg" alt="STFlowH2R Data Pipeline">
+        <p>
+            Our two-stage framework consists of: (1) an offline data generation pipeline that synthesizes diverse H2R handover demonstrations using Vision Foundation Models without requiring physical robots, and (2) STFlowH2R policy learning that leverages 4D spatiotemporal flow representations for diffusion-based action generation.
+        </p>
+
+        <h3>Stage 1: Offline Data Generation</h3>
+        <p>
+            We introduce a physical robot-free data generation pipeline that produces augmented and diverse handover demonstrations:
+        </p>
+        <ul>
+            <li><strong>VFM-based Object Pose Estimation:</strong> Utilizes Grounding DINO, SAM 2, and FoundationPose for zero-shot object localization and 6D pose estimation.</li>
+            <li><strong>Diverse Robot Motion Synthesis:</strong> Generates kinematically valid robot trajectories using OMPL and inverse kinematics with geometric diversity.</li>
+            <li><strong>Rule-based Temporal Alignment:</strong> Ensures temporal coherence between human and robot motions through constraint-based augmentation.</li>
+        </ul>
+
+        <h3>Stage 2: 4D Spatiotemporal Flow-Conditioned Policy Learning</h3>
+        <img class="figure" src="assets/images/STEncoding.jpg" alt="4D Spatiotemporal Flow Encoding" style="width: 80%; height: auto; display: block; margin: 0 auto;">
+        <p>
+            STFlowH2R learns from rich 4D spatiotemporal representations:
+        </p>
+        <ul>
+            <li><strong>Skeletal Kinematic Flow:</strong> Captures high-level motion dynamics using Graph Attention Networks on human and robot kinematic structures.</li>
+            <li><strong>Geometric Motion Flow:</strong> Characterizes fine-grained surface interactions through point cloud flow processing.</li>
+            <li><strong>Diffusion Policy:</strong> Generates coherent robot actions through iterative denoising conditioned on fused spatiotemporal features.</li>
+        </ul>
+        <img class="figure" src="assets/images/diffusion.jpg" alt="Diffusion Policy Architecture" style="width: 80%; height: auto; display: block; margin: 0 auto;">
+
+        <h2 id="results">
+            Experimental Results
+        </h2>
+        
+        <h3>Experimental Setup</h3>
+        <img class="figure" src="assets/images/exp_setting.jpg" alt="Experimental Setup"  style="width: 60%; height: auto; display: block; margin: 0 auto;">
+        <p>
+            We evaluate STFlowH2R in both simulation and real-world environments with diverse objects and handover scenarios.
+        </p>
+        
+        <h3>Physical Robot Results</h3>
+        <img class="figure" src="assets/images/physical_results.jpg" alt="Physical Robot Experimental Results">
+
+        <h4 id="video">
+            Video
+        </h4>
+        <div style="text-align: center;">
+            <video width="600" autoplay loop muted>
+            <source src="assets/video/STFlowH2R.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        
+        <p>
+            Extensive experiments demonstrate that STFlowH2R significantly outperforms state-of-the-art baselines across multiple metrics:
+        </p>
+        <ul>
+            <li><strong>Task Success Rate:</strong> Achieves superior handover completion rates compared to traditional IL methods.</li>
+            <li><strong>Motion Efficiency:</strong> Generates more direct and efficient robot trajectories.</li>
+            <li><strong>Trajectory Smoothness:</strong> Produces smoother and more natural robot motions.</li>
+            <li><strong>Generalization:</strong> Demonstrates robust performance across diverse objects and handover scenarios.</li>
+        </ul>
+
+        <h2 id="citation">
+            Citation
+        </h2>
+        <pre class="bibtex">
+            <code>
+                @article{zhong2025two,
+                    title={A two-stage framework for learning robot manipulation policy from 4D spatial-temporal flow in human-to-robot object handover},
+                    author={Zhong, Ruirui and Hu, Bingtao and Liu, Zhihao and Qin, Qiang and Feng, Yixiong and Wang, Lihui and Tan, Jianrong and Wang, Xi Vincent},
+                    journal={Robotics and Computer-Integrated Manufacturing},
+                    year={2025}
+                }
+            </code>
+        </pre>
+
+
+    </div>
+    
+    <div class="n-footer">
+        <div style="text-align: center; padding: 20px; color: #666;">
+            <p>&copy; 2025 STFlowH2R. This website template is adapted from <a href="https://nvlabs.github.io/glamr" target="_blank">GLAMR</a>.</p>
+        </div>
+    </div>
+</body>
+
+</html>
